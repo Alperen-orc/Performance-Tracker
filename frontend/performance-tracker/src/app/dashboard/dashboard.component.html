@@ -1,0 +1,272 @@
+<div class="container">
+  <app-menu></app-menu>
+  <div class="content">
+    <div class="header">
+      <h2>{{ title }}</h2>
+    </div>
+    <p-table
+      #dt
+      [columns]="cols"
+      [value]="filteredPerformances"
+      selectionMode="multiple"
+      [(selection)]="selectedPerformances"
+      [exportHeader]="'customExportHeader'"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      dataKey="id"
+      [rows]="10"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'agentid',
+        'firstname',
+        'surname',
+        'begin',
+        'end',
+        'dateinfo',
+        'excuse',
+        'excusehours',
+        'timeout'
+      ]"
+      class="p-datatable-sm"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex justify-between align-center">
+          <p-button
+            severity="info"
+            raised="true"
+            label="Add Performance"
+            icon="pi pi-plus"
+            (onClick)="showAddDialog()"
+            class="add-button"
+          ></p-button>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns">
+            {{ rowData[col.field] }}
+          </td>
+          <td>
+            <div class="actions">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pencil"
+                class="update"
+                title="Update"
+                (click)="editPerformance(rowData)"
+              ></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                class="delete"
+                title="Delete"
+                (click)="confirmDelete(rowData)"
+              ></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="10">No performances found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <p-dialog
+      header="Add Performance"
+      [(visible)]="displayAddDialog"
+      [modal]="true"
+      [closable]="true"
+      [style]="{ width: '50vw' }"
+      (onHide)="hideAddDialog()"
+    >
+      <div class="form-container">
+        <form [formGroup]="performanceForm" (ngSubmit)="addPerformance()">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-md-6">
+              <label for="begin">Begin</label>
+              <input
+                pInputText
+                type="datetime-local"
+                id="begin"
+                formControlName="begin"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="end">End</label>
+              <input
+                pInputText
+                type="datetime-local"
+                id="end"
+                formControlName="end"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="dateinfo">Date Info</label>
+              <input
+                pInputText
+                type="date"
+                id="dateinfo"
+                formControlName="dateinfo"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="excuse">Excuse</label>
+              <input
+                pInputText
+                type="text"
+                id="excuse"
+                formControlName="excuse"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="excusehours">Excuse Hours</label>
+              <input
+                pInputText
+                type="number"
+                id="excusehours"
+                formControlName="excusehours"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="timeout">Timeout</label>
+              <input
+                pInputText
+                type="number"
+                id="timeout"
+                formControlName="timeout"
+                class="form-control"
+              />
+            </div>
+            <div class="p-col-12 button-group">
+              <button
+                pButton
+                type="submit"
+                label="Submit"
+                class="btn-add"
+              ></button>
+              <button
+                pButton
+                type="button"
+                label="Close"
+                class="btn-close"
+                (click)="hideAddDialog()"
+              ></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </p-dialog>
+
+    <p-dialog
+      header="Update Performance"
+      [(visible)]="displayUpdateDialog"
+      [modal]="true"
+      [closable]="true"
+      [style]="{ width: '50vw' }"
+      (onHide)="hideUpdateDialog()"
+    >
+      <div class="form-container">
+        <form [formGroup]="performanceForm" (ngSubmit)="updatePerformance()">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-md-6">
+              <label for="begin">Begin</label>
+              <input
+                pInputText
+                type="datetime-local"
+                id="begin"
+                formControlName="begin"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="end">End</label>
+              <input
+                pInputText
+                type="datetime-local"
+                id="end"
+                formControlName="end"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="dateinfo">Date Info</label>
+              <input
+                pInputText
+                type="date"
+                id="dateinfo"
+                formControlName="dateinfo"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="excuse">Excuse</label>
+              <input
+                pInputText
+                type="text"
+                id="excuse"
+                formControlName="excuse"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="excusehours">Excuse Hours</label>
+              <input
+                pInputText
+                type="number"
+                id="excusehours"
+                formControlName="excusehours"
+                class="form-control"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="timeout">Timeout</label>
+              <input
+                pInputText
+                type="number"
+                id="timeout"
+                formControlName="timeout"
+                class="form-control"
+              />
+            </div>
+            <div class="p-col-12 button-group">
+              <button
+                pButton
+                type="submit"
+                label="Update"
+                class="btn-add"
+              ></button>
+              <button
+                pButton
+                type="button"
+                label="Close"
+                class="btn-close"
+                (click)="hideUpdateDialog()"
+              ></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </p-dialog>
+
+    <p-confirmDialog></p-confirmDialog>
+  </div>
+</div>

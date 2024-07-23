@@ -1,0 +1,156 @@
+/* Ana konteyner */
+.container {
+  padding: 20px; /* Sağdan ve soldan boşluk */
+  transition: margin-left 1s; /* Geçiş süresi */
+}
+
+.sidebar-open .content {
+  margin-left: 320px; /* Sidebar genişliğine göre ayarlanmalıdır */
+}
+
+.sidebar-close .content {
+  margin-left: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Add button düzenlemesi */
+.add-button {
+  align-self: flex-start; /* Sağ üst köşeye hizalamak için */
+  margin-top: 10px; /* Başlık ile aynı hizaya gelmesi için boşluk ekleyin */
+}
+
+/* Mevcut CSS kodlarınız aynı kalacak */
+.actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions button {
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem; /* Icon size */
+  color: white; /* Icon color */
+}
+
+.actions button.update {
+  background-color: #007bff; /* Mavi */
+}
+
+.actions button.update:hover {
+  background-color: #0056b3; /* Daha koyu mavi */
+  transform: scale(1.1); /* Hover'da büyütme efekti */
+}
+
+.actions button.delete {
+  background-color: #dc3545; /* Kırmızı */
+}
+
+.actions button.delete:hover {
+  background-color: #b21f2d; /* Daha koyu kırmızı */
+  transform: scale(1.1); /* Hover'da büyütme efekti */
+}
+
+.p-dialog .form-container {
+  padding: 2em;
+}
+
+.p-dialog .p-dialog-titlebar {
+  background-color: #3b5998;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.p-dialog .p-dialog-footer {
+  background-color: #f4f4f4;
+  padding: 1em;
+}
+
+.btn-add {
+  background-color: #3b5998;
+  width: 50%;
+  border-color: #3b5998;
+  color: white;
+}
+
+.btn-close {
+  background-color: #dc3545; /* Kırmızı */
+  width: 50%;
+  border-color: #dc3545;
+  color: white;
+}
+
+.p-dialog .btn {
+  padding: 0.75em;
+  font-size: 1rem;
+  border-radius: 0.8em;
+  margin-top: 1em;
+  width: 40%; /* Butonlar arasında boşluk bırakmak için genişlik ayarı */
+}
+
+.btn-add:hover {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.btn-close:hover {
+  background-color: #b21f2d; /* Daha koyu kırmızı */
+  border-color: #b21f2d;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Butonları yan yana ve aralarında boşluk olacak şekilde hizalar */
+  gap: 0.5em; /* Butonlar arasında boşluk */
+}
+
+.p-field {
+  margin-bottom: 1.5em; /* Inputlar arasında boşluk */
+}
+
+.p-field label {
+  font-weight: bold;
+}
+.center-image {
+  width: 200px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.gap-2 {
+  gap: 0.5rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btn-logout {
+  background-color: rgb(190, 16, 16);
+}

@@ -1,0 +1,251 @@
+/* Ana konteyner */
+.container {
+  padding: 20px; /* Sağdan ve soldan boşluk */
+  transition: margin-left 1s; /* Geçiş süresi */
+}
+
+.sidebar-open .content {
+  margin-left: 320px; /* Sidebar genişliğine göre ayarlanmalıdır */
+}
+
+.sidebar-close .content {
+  margin-left: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Başlık ve tablo arasında boşluk */
+  margin-top: 10px; /* Üstte boşluk */
+}
+
+/* Add button düzenlemesi */
+.add-button {
+  align-self: flex-start; /* Sağ üst köşeye hizalamak için */
+  margin-top: 3px; /* Başlık ile aynı hizaya gelmesi için boşluk ekleyin */
+  background-color: #3b5998; /* Buton rengi */
+  border-color: #3b5998; /* Buton kenar rengi */
+  color: white; /* Buton yazı rengi */
+}
+
+.add-button:hover {
+  background-color: #2d4373; /* Hover rengi */
+  border-color: #2d4373; /* Hover kenar rengi */
+}
+
+/* Mevcut CSS kodlarınız aynı kalacak */
+.actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions button {
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem; /* Icon size */
+  color: white; /* Icon color */
+}
+
+.actions button.update {
+  background-color: #007bff; /* Mavi */
+}
+
+.actions button.update:hover {
+  background-color: #0056b3; /* Daha koyu mavi */
+  transform: scale(1.1); /* Hover'da büyütme efekti */
+}
+
+.actions button.delete {
+  background-color: #dc3545; /* Kırmızı */
+}
+
+.actions button.delete:hover {
+  background-color: #b21f2d; /* Daha koyu kırmızı */
+  transform: scale(1.1); /* Hover'da büyütme efekti */
+}
+
+.p-dialog .form-container {
+  padding: 2em;
+}
+
+.p-dialog .p-dialog-titlebar {
+  background-color: #3b5998;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.p-dialog .p-dialog-footer {
+  background-color: #f4f4f4;
+  padding: 1em;
+}
+
+.btn-add {
+  background-color: #3b5998;
+  width: 50%;
+  border-color: #3b5998;
+  color: white;
+}
+
+.btn-close {
+  background-color: #dc3545; /* Kırmızı */
+  width: 50%;
+  border-color: #dc3545;
+  color: white;
+}
+
+.p-dialog .btn {
+  padding: 0.75em;
+  font-size: 1rem;
+  border-radius: 0.8em;
+  margin-top: 1em;
+  width: 40%; /* Butonlar arasında boşluk bırakmak için genişlik ayarı */
+}
+
+.btn-add:hover {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.btn-close:hover {
+  background-color: #b21f2d; /* Daha koyu kırmızı */
+  border-color: #b21f2d;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Butonları yan yana ve aralarında boşluk olacak şekilde hizalar */
+  gap: 0.5em; /* Butonlar arasında boşluk */
+}
+
+.p-field {
+  margin-bottom: 1.5em; /* Inputlar arasında boşluk */
+}
+
+.p-field label {
+  font-weight: bold;
+}
+
+.center-image {
+  width: 200px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.gap-2 {
+  gap: 0.5rem;
+}
+
+.flex.justify-between {
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.search-container {
+  margin-bottom: 20px; /* Tablonun üstünde yer almak için boşluk */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between; /* Sol, orta ve sağda olacak şekilde hizalar */
+  align-items: center;
+  margin-bottom: 20px; /* Tablonun üstünde yer almak için boşluk */
+}
+
+.left-filter {
+  margin-right: auto; /* Sol tarafa hizalar */
+}
+
+.center-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Filtreleme bileşenleri arasında boşluk */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.right-filter {
+  margin-left: auto; /* Sağ tarafa hizalar */
+}
+
+.filter-container .p-float-label,
+.filter-container .filter-button,
+.filter-container .clear-button {
+  margin-right: 10px; /* Filtreleme bileşenleri arasında boşluk */
+}
+
+.filter-container .p-float-label input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.filter-container .p-float-label label {
+  font-size: 0.95rem;
+  color: #666;
+  position: absolute;
+  top: -1rem;
+  left: 0.5rem;
+  background: white;
+  padding: 0 0.25rem;
+}
+
+.dropdown-firstname {
+  width: 200px;
+}
+.date-input {
+  position: relative;
+}
+
+.date-input input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%; /* Genişlik ayarı */
+  box-sizing: border-box; /* Kenarlık ve dolgu dahil genişlik */
+}
+
+.date-input label {
+  font-size: 0.95rem;
+  color: #666;
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  background: white;
+  padding: 0 0.25rem;
+}
+
+.cdk-overlay-container,
+.cdk-overlay-pane {
+  z-index: 1051 !important;
+}
+
+p-dialog {
+  z-index: 1050;
+}

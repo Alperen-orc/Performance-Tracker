@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "primeicons/primeicons.css";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-dialog-container {
+  z-index: 1000 !important;
+}
+
+.mat-datepicker-content,
+.mat-timepicker-content {
+  z-index: 1100 !important; /* Dialog'un üzerinde görünmesi için */
+}

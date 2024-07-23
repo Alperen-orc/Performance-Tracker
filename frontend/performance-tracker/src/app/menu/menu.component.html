@@ -1,0 +1,68 @@
+<div
+  class="container"
+  [ngClass]="{
+    'sidebar-open': displaySidebar,
+    'sidebar-close': !displaySidebar
+  }"
+>
+  <div
+    class="container"
+    [ngClass]="{
+      'sidebar-open': displaySidebar,
+      'sidebar-close': !displaySidebar
+    }"
+  >
+    <div class="content">
+      <p-menubar class="menubar">
+        <ng-template pTemplate="start">
+          <button
+            pButton
+            severity="info"
+            raised="true"
+            icon="pi pi-bars"
+            (click)="toggleSidebar()"
+            class="sidebar-button"
+          ></button>
+          <img
+            src="https://kariyer.global-bilgi.com.tr/assets/common/images/main-logo.png"
+            alt="Center Image"
+            class="center-image"
+          />
+        </ng-template>
+        <ng-template pTemplate="end">
+          <div class="flex align-items-center gap-2">
+            <span>{{ name }} {{ surname }}</span>
+            <p-avatar
+              size="xlarge"
+              *ngIf="image"
+              [image]="image"
+              shape="circle"
+            ></p-avatar>
+            <button
+              size="small"
+              class="btn-logout"
+              pButton
+              severity="danger"
+              raised="true"
+              label="Logout"
+              icon="pi pi-sign-out"
+              (click)="logout()"
+            ></button>
+          </div>
+        </ng-template>
+      </p-menubar>
+    </div>
+
+    <p-sidebar
+      [(visible)]="displaySidebar"
+      [baseZIndex]="10000"
+      [position]="'left'"
+      [showCloseIcon]="true"
+      [modal]="false"
+      (onHide)="onSidebarHide()"
+    >
+      <h1 style="font-weight: normal">Menu</h1>
+      <p-menu [model]="items" [style]="{ width: '100%' }"></p-menu>
+    </p-sidebar>
+  </div>
+</div>

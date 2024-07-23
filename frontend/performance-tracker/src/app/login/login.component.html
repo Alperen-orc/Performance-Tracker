@@ -1,0 +1,43 @@
+<div class="login-background">
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Giriş Ekranı</h2>
+      <form (ngSubmit)="login()">
+        <div class="input-group">
+          <label for="username">
+            <i class="pi pi-user"></i>
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            [(ngModel)]="username"
+            placeholder="Kullanıcı Adı"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="password">
+            <i class="pi pi-lock"></i>
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Parola"
+            required
+          />
+        </div>
+        <button type="submit" class="login-button">Giriş Yap</button>
+        <div class="remember-me">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe">Beni Hatırla</label>
+        </div>
+      </form>
+      <p class="signup-link">
+        Hesabınız yok mu? <a (click)="navigateToSignup()">Kayıt Ol</a>
+      </p>
+    </div>
+  </div>
+</div>

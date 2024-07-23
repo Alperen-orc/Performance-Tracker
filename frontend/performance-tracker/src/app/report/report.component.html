@@ -1,0 +1,122 @@
+<div class="container">
+  <app-menu></app-menu>
+  <div class="content">
+    <div class="header">
+      <h2>{{ title }}</h2>
+    </div>
+    <div class="filter-container">
+      <div class="left-filter">
+        <p-dropdown
+          [options]="firstNames"
+          [(ngModel)]="selectedFirstName"
+          placeholder="Select First Name"
+          (onChange)="filterByFirstName()"
+          optionLabel="firstname"
+          class="dropdown-firstname"
+        ></p-dropdown>
+      </div>
+      <div class="right-filter">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            [(ngModel)]="searchValue"
+            (input)="applyFilterGlobal($event, dt)"
+            placeholder="Search keyword"
+          />
+        </span>
+      </div>
+    </div>
+    <p-table
+      #dt
+      [columns]="cols"
+      [value]="filteredPerformances"
+      selectionMode="multiple"
+      [(selection)]="selectedPerformances"
+      [exportHeader]="'customExportHeader'"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      dataKey="id"
+      [rows]="10"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'agentid',
+        'firstname',
+        'surname',
+        'begin',
+        'end',
+        'dateinfo',
+        'excuse',
+        'excusehours',
+        'timeout'
+      ]"
+      class="p-datatable-sm"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex justify-between align-center">
+          <p-button
+            icon="pi pi-external-link"
+            label="Export"
+            severity="success"
+            raised="true"
+            (onClick)="exportCSV()"
+            class="export-button"
+          ></p-button>
+          <div class="center-filters">
+            <span class="p-float-label date-input">
+              <input
+                pInputText
+                id="fromDate"
+                [(ngModel)]="fromDate"
+                type="date"
+              />
+              <label for="fromDate">From Date</label>
+            </span>
+            <span class="p-float-label date-input">
+              <input pInputText id="toDate" [(ngModel)]="toDate" type="date" />
+              <label for="toDate">To Date</label>
+            </span>
+            <p-button
+              severity="info"
+              raised="true"
+              label="Filter"
+              icon="pi pi-filter"
+              (onClick)="filterByDate()"
+              class="ml-2 filter-button"
+            ></p-button>
+            <p-button
+              severity="info"
+              raised="true"
+              label="Clear"
+              icon="pi pi-times"
+              (onClick)="clearFilter()"
+              class="ml-2 clear-button"
+            ></p-button>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns">
+            {{ rowData[col.field] }}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="10">No performances found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

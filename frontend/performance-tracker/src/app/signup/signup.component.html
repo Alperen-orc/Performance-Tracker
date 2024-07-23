@@ -1,0 +1,74 @@
+<div class="signup-background">
+  <div class="signup-container">
+    <div class="signup-card">
+      <h2>Kayıt Ol</h2>
+      <form (ngSubmit)="signup()">
+        <div class="input-group">
+          <label for="name">
+            <i class="pi pi-id-card"></i>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="name"
+            placeholder="Ad"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="surname">
+            <i class="pi pi-id-card"></i>
+          </label>
+          <input
+            type="text"
+            id="surname"
+            name="surname"
+            [(ngModel)]="surname"
+            placeholder="Soyad"
+            required
+          />
+          <input
+            type="text"
+            id="agentid"
+            name="agentid"
+            [(ngModel)]="agentid"
+            placeholder="Agent ID"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="username">
+            <i class="pi pi-user"></i>
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            [(ngModel)]="username"
+            placeholder="Kullanıcı Adı"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="password">
+            <i class="pi pi-lock"></i>
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Parola"
+            required
+          />
+        </div>
+        <button type="submit" class="signup-button">Kayıt Ol</button>
+      </form>
+      <p class="login-link">
+        Zaten mevcut bir hesabınız var mı?
+        <a (click)="navigateToLogin()">Giriş Yap</a>
+      </p>
+    </div>
+  </div>
+</div>
